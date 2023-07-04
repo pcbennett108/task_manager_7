@@ -24,6 +24,30 @@ RSpec.describe Task, type: :model do
     
         expect(task.laundry?).to be(false)
       end
+
+      it "returns true when title contains laundry" do
+        task = Task.create!(title: "laundry day", description: "wash day tomorrow")
+    
+        expect(task.laundry?).to be(true)
+      end
+
+      it "returns true when description contains laundry" do
+        task = Task.create!(title: "washing", description: "time to do some laundry")
+    
+        expect(task.laundry?).to be(true)
+      end
+
+      it "returns true when title contains mixed case laundry" do
+        task = Task.create!(title: "lAundRy day", description: "wash day tomorrow")
+    
+        expect(task.laundry?).to be(true)
+      end
+
+      it "returns true when description contains mixed case laundry" do
+        task = Task.create!(title: "washing", description: "time to do some lauNdry")
+    
+        expect(task.laundry?).to be(true)
+      end
     end
   end
 end

@@ -1,6 +1,8 @@
 class Task < ApplicationRecord
   def laundry?
-    if title == "laundry" || description == "laundry"
+    if title.downcase.include? "laundry"
+      return true
+    elsif  description.downcase.include? "laundry"
       return true
     else
       return false
